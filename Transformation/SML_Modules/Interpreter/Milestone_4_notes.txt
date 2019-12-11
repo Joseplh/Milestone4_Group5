@@ -1,0 +1,9 @@
+Goal: 
+	Implement semantics function of milestone 2 in SML.
+	Implement type-checking functions from milestone 3 in SML.
+
+Examples:
+(*Representation of parse trees used by the TL system*)
+datatype NODE_INFO = ...; (*ignored for now*)
+datatype INODE     = inode of string * NODE_INFO;
+datatype ITREE     = itree of INODE * ITREE list;
