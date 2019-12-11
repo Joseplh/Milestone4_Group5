@@ -22,6 +22,7 @@ itree(inode("stmtList",_)
 	]
 )
 
+time 6:40, caution in id expression, do not let it be generic
 assign ::= id = expression
 [[id1 = expression1]]
 itree(inode("assign",_),
