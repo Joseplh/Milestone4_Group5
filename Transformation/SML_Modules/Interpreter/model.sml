@@ -1,3 +1,5 @@
+exception runtime_error;
+
 (* =========================================================================================================== *)
 structure Model =
 
@@ -12,6 +14,7 @@ struct
 *)
 fun getLeaf( term ) = CONCRETE.leavesToStringRaw term 
 
+fun error msg = ( print msg; raise runtime_error );
 
 (* For your typeChecker you may want to have a datatype that defines the types 
   (i.e., integer, boolean and error) in your language. *)
@@ -24,11 +27,72 @@ datatype types = INT | BOOL | ERROR;
 datatype denotable_value =  Boolean of bool 
                           | Integer of int;
 
-
 type loc   = int
 type env   = (string * types * loc) list
 type store = (loc * denotable_value) list
 
+fun accessEnv (id1,(env,_,s)) =
+    let
+        val msg = "Error in Accessing Environment.\n"^id1^" not found.";
+        
+        fun aux [] = error msg
+        |   aux ((id,t,loc)::env) =
+                if id1 = id
+                then (t,loc)
+                else aux env;
+    in
+        aux env
+    end;
+    
+ fun accessStore (loc1,(env,_,s)) =
+    let
+        val msg = "Error in Accessing Store.\n"^Int.toString(loc1)^" not found.";
+        
+        fun aux [] = error msg
+        |   aux ((loc,v)::s) =
+                if loc1 = loc
+                then v
+                else aux s;
+    in
+        aux s
+    end;
+
+fun updateEnv (id1,t1,loc1,(env1,n1,s)) =
+        let
+            fun aux [] = ([(id1,t1,loc1)],n1+1,s)
+            |   aux ((id,t,loc)::env2) =
+                    if id1 = id 
+                    then ((id1,t1,loc1)::env2,n1,s)
+                    else
+                        let
+                            val (env3,n2,_) = aux env2
+                        in
+                            ((id,t,loc)::env3,n2,s)
+                        end
+        in
+            aux env1
+        end;
+
+fun updateStore (loc1,v1,(env,n,s1)) =
+        let
+            fun aux [] = [(loc1, v1)]
+            |   aux ((loc,v)::s2) =
+                    if loc1 = loc 
+                    then (loc1,v1)::s2
+                    else (loc,v)::aux s2
+        in
+            (env,n,aux s1)
+        end;
+
+fun getLoc (t,loc) = loc;
+
+fun getType (t,loc) = t;
+
+fun toInt(Boolean(x)) = error "Cannot Parse Boolean to Integer."
+|   toInt(Integer(x)) = x;
+
+fun toBool(Integer(x)) = error "Cannot Parse Integer to Boolean."
+|   toBool(Boolean(x)) = x;
 
 (* The model defined here is a triple consisting of an environment, an address counter, and a store. The environment
    and the store are lists similar to what we have used in class. The address counter serves as an implementation of
