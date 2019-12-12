@@ -26,7 +26,7 @@ datatype types = INT | BOOL | ERROR;
 *)
 datatype denotable_value =  Boolean of bool 
                           | Integer of int;
-
+                          
 type loc   = int
 type env   = (string * types * loc) list
 type store = (loc * denotable_value) list
@@ -37,8 +37,7 @@ fun accessEnv (id1,(env,_,s)) =
         
         fun aux [] = error msg
         |   aux ((id,t,loc)::env) =
-                if id1 = id
-                then (t,loc)
+                if id1 = id then (t,loc)
                 else aux env;
     in
         aux env
@@ -73,7 +72,7 @@ fun updateEnv (id1,t1,loc1,(env1,n1,s)) =
             aux env1
         end;
 
-fun updateStore (loc1,v1,(env,n,s1)) =
+fun updateStore (loc1, v1, (env,n,s1)) =
         let
             fun aux [] = [(loc1, v1)]
             |   aux ((loc,v)::s2) =
@@ -83,6 +82,20 @@ fun updateStore (loc1,v1,(env,n,s1)) =
         in
             (env,n,aux s1)
         end;
+
+fun typeToString BOOL  = "bool"
+  | typeToString INT   = "integer"
+  | typeToString ERROR = "error";
+  
+fun envEntryToString (id, t, loc) = 
+        "(" ^ id ^ typeToString t ^ "," ^ Int.toString loc ^ ")";
+        
+fun showEnv [] = print "\n"
+  | showEnv (entry::env) = (
+                                print("\n" ^ envEntryToString entry);
+                                showEnv env
+                            );
+(*showEnv [ ("x", BOOL, 0), ("y", INT, 27) ];*)
 
 fun getLoc (t,loc) = loc;
 
