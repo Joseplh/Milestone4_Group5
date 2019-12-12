@@ -10,7 +10,7 @@ struct
    It is up to the interpreter to translate values accordingly (e.g., string to integer and string to boolean).
    
    Consult (i.e., open Int and open Bool) the SML structures Int and Bool for functions that can help with 
-   this translation. 
+   this translation. Test
 *)
 fun getLeaf( term ) = CONCRETE.leavesToStringRaw term 
 
