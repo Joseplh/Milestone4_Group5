@@ -94,7 +94,7 @@ fun typeOf (itree(inode("Increment",_),[itree(inode("++",_),[]),id]),m) =
         else ERROR
     end
     
-|   typeOf (itree(inode("EqualityExpr",_),[ComparisonExpr]),m) = typeOF (ComparisonExpr,m)
+|   typeOf (itree(inode("EqualityExpr",_),[ComparisonExpr]),m) = typeOf (ComparisonExpr,m)
 
 |   typeOf (itree(inode("ComparisonExpr",_),[ComparisonExpr,itree(inode("<",_),[]),AddSubExpr]),m) =
     let
@@ -229,9 +229,9 @@ fun typeOf (itree(inode("Increment",_),[itree(inode("++",_),[]),id]),m) =
 
 |   typeOf (itree(inode("bool",_),[boolVal]),m) = BOOL
 
-|   typeCheck (itree(inode(x_root,_),children),_) = raise General.Fail ("\n\nIn typeCheck root = " ^ x_root ^ "\n\n")
+|   typeOf (itree(inode(x_root,_),children),_) = raise General.Fail ("\n\nIn typeCheck root = " ^ x_root ^ "\n\n")
 
-|   typeCheck _ = raise Fail ("Error in Model.typeCheck - this should never occur")
+|   typeOf _ = raise Fail ("Error in Model.typeCheck - this should never occur")
 
     
 
