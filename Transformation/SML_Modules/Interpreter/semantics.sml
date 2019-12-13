@@ -269,8 +269,6 @@ fun E(itree(inode("Increment",_),[itree(inode("++",_),[]),node_id]),m0) =
     
 |   E(itree(inode("ExpExpr",_),[BaseExpr]),m0) = E(BaseExpr,m0)
 
-|   E(itree(inode("BaseExpr",_),[Increment]),m0) = E(Increment,m0)
-
 |   E(itree(inode("BaseExpr",_),[itree(inode("(",_),[]),Expr,itree(inode(")",_),[])]),m0) = E(Expr,m0)
 
 |   E(itree(inode("BaseExpr",_),[itree(inode("|",_),[]),Expr,itree(inode("|",_),[])]),m0) = 
@@ -280,11 +278,16 @@ fun E(itree(inode("Increment",_),[itree(inode("++",_),[]),node_id]),m0) =
         (Integer(Int.abs(toInt(v1))), m1)
     end
     
+|   E(itree(inode("BaseExpr",_),[singleChild]),m0) = E(singleChild,m0)  
+
+    (*VW
+|   E(itree(inode("BaseExpr",_),[Increment]),m0) = E(Increment,m0)    
 |   E(itree(inode("BaseExpr",_),[id]),m0) = E(id,m0)
 
 |   E(itree(inode("BaseExpr",_),[integer]),m0) = E(integer,m0)
 
-|   E(itree(inode("BaseExpr",_),[bool]),m0) = E(bool,m0)
+|   E(itree(inode("BaseExpr",_),[bool]),m0) = E(bool,m0) 
+    *)
 
 |   E(itree(inode("id",_),[node_id]),m) =
     let
