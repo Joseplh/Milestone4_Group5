@@ -263,7 +263,11 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
         m1
     end
    
-|   typeCheck (itree(inode("Declaration",_),[itree(inode("INT",_),[]),node_id]),m0) =
+|   typeCheck (itree(inode("Declaration",_),
+        [
+            itree(inode("INT",_),[]),
+            node_id
+        ]),m0) =
     let
         val id = getLeaf(node_id)
         val (_,n,_) = m
@@ -271,7 +275,11 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
         updateEnv(id,INT,n,m)
     end
     
-|   typeCheck (itree(inode("Declaration",_),[itree(inode("BOOL",_),[]),node_id]),m0) =
+|   typeCheck (itree(inode("Declaration",_),
+        [
+            itree(inode("BOOL",_),[]),
+            node_id
+        ]),m0) =
     let
         val id = getLeaf(node_id)
         val (_,n,_) = m
@@ -281,7 +289,13 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
 
 |   typeCheck (itree(inode("Declaration",_),[AssignDec]),m) = typeCheck (AssignDec,m)
 
-|   typeCheck (itree(inode("AssignDec",_),[itree(inode("INT",_),[]),node_id,itree(inode("=",_),[]),AddSubExpr]),m0) =
+|   typeCheck (itree(inode("AssignDec",_),
+        [
+            itree(inode("INT",_),[]),
+            node_id,
+            itree(inode("=",_),[]),
+            AddSubExpr
+        ]),m0) =
     let
         val id = getLeaf(node_id)
         val (_,n,_) = m0
@@ -305,7 +319,12 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
         else raise model_error
     end
     
-|   typeCheck (itree(inode("Assignment",_),[node_id,itree(inode("=",_),[]),Expr]),m) =
+|   typeCheck (itree(inode("Assignment",_),
+        [
+            node_id,
+            itree(inode("=",_),[]),
+            Expr
+        ]),m) =
     let
         val id = getLeaf(node_id)
         val t1 = getType(accessEnv(id,m))
@@ -325,7 +344,13 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
         else m
     end
     
-|   typeCheck (itree(inode("PrintSt",_),[itree(inode("print",_),[]),itree(inode("(",_),[]),Expr,itree(inode(")",_),[])]),m) =
+|   typeCheck (itree(inode("PrintSt",_),
+        [
+            itree(inode("print",_),[]),
+            itree(inode("(",_),[]),
+            Expr,
+            itree(inode(")",_),[])
+        ]),m) =
     let
         val t = typeOf (Expr,m)
     in
@@ -334,14 +359,26 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
         else m
     end
     
-|   typeCheck (itree(inode("Block",_),[itree(inode("{",_),[]),StatementList,itree(inode("}",_),[])]),m0) = 
+|   typeCheck (itree(inode("Block",_),
+        [
+            itree(inode("{",_),[]),
+            StatementList,
+            itree(inode("}",_),[])
+        ]),m0) = 
     let
         val m1 = typeCheck (StatementList,m0)
     in
         m1
     end
     
-|   typeCheck (itree(inode("CondStatement",_),[itree(inode("if",_),[]),itree(inode("(",_),[]),Expr,itree(inode(")",_),[]),Block]),m0) = 
+|   typeCheck (itree(inode("CondStatement",_),
+        [
+            itree(inode("if",_),[]),
+            itree(inode("(",_),[]),
+            Expr,
+            itree(inode(")",_),[]),
+            Block
+        ]),m0) = 
     let
         val t = typeOf (Expr,m0)
         val m1 = typeCheck (Block, m0)
@@ -402,11 +439,11 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
         ]),m0) = 
     let
         val m1 = typeCheck (AssignDec,m0)
-        val t = typeOf (Expr,m1)
         val m2 = typeCheck (Block,m1)
-        val m3 = typeCheck (Increment,m2)
+        val t1 = typeOf (Expr,m1)
+        val t2 = typeOf (Increment, m1)
     in
-        if t = BOOL
+        if t1 = BOOL andalso t2 = INT
         then m0
         else raise model_error
     end
@@ -419,11 +456,3 @@ fun typeCheck (itree(inode("Program",_),[StatementList]),m) = typeCheck (Stateme
 (* =========================================================================================================== *)  
 end (* struct *)
 (* =========================================================================================================== *)
-
-
-
-
-
-
-
-
