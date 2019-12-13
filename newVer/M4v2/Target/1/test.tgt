@@ -1,0 +1,1 @@
+INTEGER x = 10 ; BOOLEAN t = false ; t = true + 1 ; 

@@ -1,0 +1,63 @@
+USE_LR_PARSER
+
+prog
+
+(* ======================================================================================================= *)
+
+<prog>              ::= <StatementList>                                                     .
+<StatementList>     ::= <Statement> ";" <StatementList> 
+                      | <Epsilon>                                                           .
+<Epsilon>           ::=                                                                     .
+<Statement>         ::= <Declaration>
+                      | <Assignment>
+                      | <Conditional>
+                      | <Increment>
+                      | <Print>
+                      | <Block> 
+                      | <ForLoop> 
+                      | <WhileLoop>                                                         .
+<Declaration>       ::= "INTEGER" Variable 
+                      | "BOOLEAN" Variable                                                  .
+<Assignment>        ::= Variable "=" <Expression>                                       
+                      | "INTEGER" Variable "=" <Expression>
+                      | "BOOLEAN" Variable "=" <Expression>                                 .
+<Conditional>       ::= "if" "(" <Expression> ")" <Block> 
+                      | "if" "(" <Expression> ")" <Block> "else" <Block>                    .
+<Increment>         ::= "++" Variable 
+                      | "--" Variable 
+                      | Variable "++" 
+                      | Variable "--"                                                       .
+<WhileLoop>         ::= "while" "(" <Expression> ")" <Block>                                .
+<ForLoop>           ::= "for" "(" <Assignment> ";" <Expression> ";" <Increment> ")" <Block>  .
+<Print>             ::= "print" "(" <Expression> ")"                                        .
+<Block>             ::= "{" <StatementList> "}"                                             .
+<Expression>        ::= <ExprOr>                                                            .
+<ExprOr>            ::= <ExprOr> "or" <ExprAnd>
+                      | <ExprAnd>                                                           .
+<ExprAnd>           ::= <ExprAnd> "and" <ExprBoolComp>
+                      | <ExprBoolComp>                                                      .
+<ExprBoolComp>      ::= <ExprBoolComp>"!="<ExprIntComp> 
+                      | <ExprBoolComp>"=="<ExprIntComp>
+                      | <ExprIntComp>                                                       .
+<ExprIntComp>       ::= <ExprIntComp> "<" <ExprAddSub>
+                      | <ExprIntComp> ">" <ExprAddSub>
+                      | <ExprAddSub>                                                        .
+<ExprAddSub>        ::= <ExprAddSub> "+" <ExprMulDivMod>
+                      | <ExprAddSub> "-" <ExprMulDivMod>
+                      | <ExprMulDivMod>                                                     .
+<ExprMulDivMod>     ::= <ExprMulDivMod> "*" <ExprNeg>
+                      | <ExprMulDivMod> "/" <ExprNeg>
+                      | <ExprMulDivMod> "MOD" <ExprNeg>
+                      | <ExprNeg>                                                           .
+<ExprNeg>           ::= "~" <ExprNeg>
+                      | "not" <ExprNeg>
+                      | <ExprExp>                                                           .
+<ExprExp>           ::= <ExprBase> "^" <ExprExp> 
+                      | <ExprBase>                                                          .
+<ExprBase>          ::= Integer 
+                      | "true" 
+                      | "false" 
+                      | Variable 
+                      | "(" <Expression> ")" 
+                      | "|"<Expression>"|" 
+                      | <Increment>                                                         .

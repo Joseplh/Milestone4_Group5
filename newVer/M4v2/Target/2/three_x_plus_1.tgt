@@ -1,0 +1,1 @@
+INTEGER sum ; sum = 0 ; INTEGER sum2 ; sum2 = 0 ; { INTEGER x ; for ( INTEGER i = 1 ; i < 32 ; i ++ ) { x = i ; while ( x != 1 ) { for ( INTEGER j = 1 ; j < 3 ; j ++ ) { if ( x MOD 2 == 0 ) { x = x / 2 ;  } else { x = 3 * x + 1 ;  } ;  } ; sum = sum + 3 ;  } ;  } ;  } ; print ( sum ) ; 
