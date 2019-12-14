@@ -1,0 +1,20 @@
+INTEGER  x0;
+INTEGER  x1;
+INTEGER  x2;
+INTEGER  x3;
+INTEGER  x4;
+INTEGER  x5;
+INTEGER  x6;
+INTEGER  x7;
+INTEGER  x8;
+INTEGER  x9;
+INTEGER x10;
+INTEGER x11;
+INTEGER x12;
+INTEGER x13;
+
+x0 = 1;
+x1 = x0;
+x2 = x1 + 1;
+x3 = x1 + x2;
+x4 = x2 - x1;
