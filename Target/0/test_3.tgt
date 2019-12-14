@@ -93,9 +93,10 @@ x7 = 2 / 2;
 x8 = 2 * 2 / 2;
 x9 = 2 + 2 / 2;
 x10 = ( 2 + 2 ) / 2;
-
-
-
+{
+    x11 = 5;
+};
+x12 = x11;
 y50 = true;
 y51 = y50;
 y52 = not y50;
@@ -106,3 +107,28 @@ y56 = y51 or y52;
 y57 = ( y51 or y52 ) and y53;
 y58 = 1 == 1;
 y59 = 1 != 1;
+if ( true ) {
+    y60 = true;
+};
+if ( true and false ) {
+    y61 = true;
+}
+else {
+    y61 = false;
+};
+if ( true or false ) {
+    y62 = true;
+}
+else {
+    y62 = false;
+};
+if ( true and false ) {
+    y63 = true;
+}
+else { 
+    if (true and true ){
+        y63 = false;
+    };
+};
+
+

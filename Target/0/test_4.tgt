@@ -1,0 +1,32 @@
+INTEGER  x0;
+INTEGER  x1;
+INTEGER  x2;
+INTEGER  x3;
+INTEGER  x4;
+INTEGER  x5;
+INTEGER  x6;
+INTEGER  x7;
+INTEGER  x8;
+INTEGER  x9;
+BOOLEAN  y0;
+BOOLEAN  y1;
+BOOLEAN  y2;
+BOOLEAN  y3;
+BOOLEAN  y4;
+BOOLEAN  y5;
+BOOLEAN  y6;
+BOOLEAN  y7;
+BOOLEAN  y8;
+BOOLEAN  y9;
+
+x0 = 1;
+x1 = x0++;
+x2 = 1;
+x3 = ++x2;
+
+for(x4 = 5; x4 > 3; x4--){
+    print(x4);
+};
+
+
+

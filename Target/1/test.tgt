@@ -1,1 +1,1 @@
-INTEGER x = 10 ; BOOLEAN t = false ; t = true + 1 ; 
+INTEGER x = 1 ; for ( INTEGER j = 1 ; j < 3 ; j ++ ) { print ( 0 ) ;  } ; 

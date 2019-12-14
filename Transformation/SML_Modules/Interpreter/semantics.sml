@@ -77,7 +77,7 @@ fun E(itree(inode("Increment",_),
         val v1 = add(v0, Integer 1)
         val m1 = updateStore(l0, Integer v1, m0)
     in
-        (Integer v1, m0)
+        (Integer v1, m1)
     end
     
  |  E(itree(inode("Increment",_), 
@@ -94,7 +94,7 @@ fun E(itree(inode("Increment",_),
         val v1 = add(v0, Integer (~1))
         val m1 = updateStore(l0, Integer v1, m0)
     in
-        (Integer v1, m0)
+        (Integer v1, m1)
     end
     
  |  E(itree(inode("Increment",_), 
@@ -128,7 +128,7 @@ fun E(itree(inode("Increment",_),
         val v1 = add(v0, Integer (~1))
         val m1 = updateStore(l0, Integer v1, m0)
     in
-        (v0, m0)
+        (v0, m1)
     end 
 
  |  E(itree(inode("Expression",_), 
@@ -289,9 +289,9 @@ fun E(itree(inode("Increment",_),
         m0
     ) =
     let
-        val (v0, m1)    = E(ExprAddSub0, m0)
-        val (v1, m2)    = E(ExprMulDivMod0, m1)
-        val v2          = Integer(toInt(v0) + toInt(v1))
+        val (v0, m1) = E(ExprAddSub0, m0)
+        val (v1, m2) = E(ExprMulDivMod0, m1)
+        val v2 = Integer(toInt(v0) + toInt(v1))
     in
         (v2, m2)
     end

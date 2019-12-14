@@ -24,7 +24,7 @@ struct16 [label="ExprNeg"]
 struct17 [label="ExprExp"]
 struct18 [label="ExprBase"]
 struct19 [label="Integer"]
-struct20 [label="10"]
+struct20 [label="1"]
 struct19->struct20
 struct18->struct19
 struct17->struct18
@@ -43,26 +43,36 @@ struct21 [label=";"]
 struct2->struct21
 struct22 [label="StatementList"]
 struct23 [label="Statement"]
-struct24 [label="Assignment"]
-struct25 [label="BOOLEAN"]
+struct24 [label="ForLoop"]
+struct25 [label="for"]
 struct24->struct25
-struct26 [label="Variable"]
-struct27 [label="t"]
-struct26->struct27
+struct26 [label="("]
 struct24->struct26
-struct28 [label="="]
-struct24->struct28
-struct29 [label="Expression"]
-struct30 [label="ExprOr"]
-struct31 [label="ExprAnd"]
-struct32 [label="ExprBoolComp"]
-struct33 [label="ExprIntComp"]
-struct34 [label="ExprAddSub"]
-struct35 [label="ExprMulDivMod"]
-struct36 [label="ExprNeg"]
-struct37 [label="ExprExp"]
-struct38 [label="ExprBase"]
-struct39 [label="false"]
+struct27 [label="Assignment"]
+struct28 [label="INTEGER"]
+struct27->struct28
+struct29 [label="Variable"]
+struct30 [label="j"]
+struct29->struct30
+struct27->struct29
+struct31 [label="="]
+struct27->struct31
+struct32 [label="Expression"]
+struct33 [label="ExprOr"]
+struct34 [label="ExprAnd"]
+struct35 [label="ExprBoolComp"]
+struct36 [label="ExprIntComp"]
+struct37 [label="ExprAddSub"]
+struct38 [label="ExprMulDivMod"]
+struct39 [label="ExprNeg"]
+struct40 [label="ExprExp"]
+struct41 [label="ExprBase"]
+struct42 [label="Integer"]
+struct43 [label="1"]
+struct42->struct43
+struct41->struct42
+struct40->struct41
+struct39->struct40
 struct38->struct39
 struct37->struct38
 struct36->struct37
@@ -70,70 +80,120 @@ struct35->struct36
 struct34->struct35
 struct33->struct34
 struct32->struct33
-struct31->struct32
-struct30->struct31
-struct29->struct30
-struct24->struct29
-struct23->struct24
-struct22->struct23
-struct40 [label=";"]
-struct22->struct40
-struct41 [label="StatementList"]
-struct42 [label="Statement"]
-struct43 [label="Assignment"]
-struct44 [label="Variable"]
-struct45 [label="t"]
-struct44->struct45
-struct43->struct44
-struct46 [label="="]
-struct43->struct46
-struct47 [label="Expression"]
-struct48 [label="ExprOr"]
-struct49 [label="ExprAnd"]
-struct50 [label="ExprBoolComp"]
-struct51 [label="ExprIntComp"]
-struct52 [label="ExprAddSub"]
-struct53 [label="ExprAddSub"]
-struct54 [label="ExprMulDivMod"]
-struct55 [label="ExprNeg"]
-struct56 [label="ExprExp"]
-struct57 [label="ExprBase"]
-struct58 [label="true"]
-struct57->struct58
+struct27->struct32
+struct24->struct27
+struct44 [label=";"]
+struct24->struct44
+struct45 [label="Expression"]
+struct46 [label="ExprOr"]
+struct47 [label="ExprAnd"]
+struct48 [label="ExprBoolComp"]
+struct49 [label="ExprIntComp"]
+struct50 [label="ExprIntComp"]
+struct51 [label="ExprAddSub"]
+struct52 [label="ExprMulDivMod"]
+struct53 [label="ExprNeg"]
+struct54 [label="ExprExp"]
+struct55 [label="ExprBase"]
+struct56 [label="Variable"]
+struct57 [label="j"]
 struct56->struct57
 struct55->struct56
 struct54->struct55
 struct53->struct54
 struct52->struct53
-struct59 [label="+"]
-struct52->struct59
+struct51->struct52
+struct50->struct51
+struct49->struct50
+struct58 [label="<"]
+struct49->struct58
+struct59 [label="ExprAddSub"]
 struct60 [label="ExprMulDivMod"]
 struct61 [label="ExprNeg"]
 struct62 [label="ExprExp"]
 struct63 [label="ExprBase"]
 struct64 [label="Integer"]
-struct65 [label="1"]
+struct65 [label="3"]
 struct64->struct65
 struct63->struct64
 struct62->struct63
 struct61->struct62
 struct60->struct61
-struct52->struct60
-struct51->struct52
-struct50->struct51
-struct49->struct50
+struct59->struct60
+struct49->struct59
 struct48->struct49
 struct47->struct48
-struct43->struct47
-struct42->struct43
-struct41->struct42
+struct46->struct47
+struct45->struct46
+struct24->struct45
 struct66 [label=";"]
-struct41->struct66
-struct67 [label="StatementList"]
-struct68 [label="Epsilon"]
+struct24->struct66
+struct67 [label="Increment"]
+struct68 [label="Variable"]
+struct69 [label="j"]
+struct68->struct69
 struct67->struct68
-struct41->struct67
-struct22->struct41
+struct70 [label="++"]
+struct67->struct70
+struct24->struct67
+struct71 [label=")"]
+struct24->struct71
+struct72 [label="Block"]
+struct73 [label="{"]
+struct72->struct73
+struct74 [label="StatementList"]
+struct75 [label="Statement"]
+struct76 [label="Print"]
+struct77 [label="print"]
+struct76->struct77
+struct78 [label="("]
+struct76->struct78
+struct79 [label="Expression"]
+struct80 [label="ExprOr"]
+struct81 [label="ExprAnd"]
+struct82 [label="ExprBoolComp"]
+struct83 [label="ExprIntComp"]
+struct84 [label="ExprAddSub"]
+struct85 [label="ExprMulDivMod"]
+struct86 [label="ExprNeg"]
+struct87 [label="ExprExp"]
+struct88 [label="ExprBase"]
+struct89 [label="Integer"]
+struct90 [label="0"]
+struct89->struct90
+struct88->struct89
+struct87->struct88
+struct86->struct87
+struct85->struct86
+struct84->struct85
+struct83->struct84
+struct82->struct83
+struct81->struct82
+struct80->struct81
+struct79->struct80
+struct76->struct79
+struct91 [label=")"]
+struct76->struct91
+struct75->struct76
+struct74->struct75
+struct92 [label=";"]
+struct74->struct92
+struct93 [label="StatementList"]
+struct94 [label="Epsilon"]
+struct93->struct94
+struct74->struct93
+struct72->struct74
+struct95 [label="}"]
+struct72->struct95
+struct24->struct72
+struct23->struct24
+struct22->struct23
+struct96 [label=";"]
+struct22->struct96
+struct97 [label="StatementList"]
+struct98 [label="Epsilon"]
+struct97->struct98
+struct22->struct97
 struct2->struct22
 struct1->struct2
 }
